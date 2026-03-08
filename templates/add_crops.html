@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+  .crop-card {
+    max-width: 760px;
+    margin: 2rem auto 0;
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+  }
+
+  .crop-header {
+    background: linear-gradient(135deg, #0f766e 0%, #15803d 55%, #166534 100%);
+    color: #f8fafc;
+    border-radius: 1rem 1rem 0 0;
+    padding: 1.1rem 1.4rem;
+  }
+
+  .crop-header h2 {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+
+  .crop-header p {
+    margin: 0.3rem 0 0;
+    color: #e2e8f0;
+    font-size: 0.92rem;
+  }
+
+  .crop-form .form-label {
+    color: #1e293b;
+    font-weight: 600;
+  }
+
+  .crop-form .input-group-text {
+    background: #f8fafc;
+    color: #166534;
+    border-right: 0;
+  }
+
+  .crop-form .form-control,
+  .crop-form .form-select {
+    border-color: #d1d5db;
+    color: #0f172a;
+  }
+
+  .crop-form .form-control::placeholder {
+    color: #94a3b8;
+  }
+
+  .crop-form .form-control:focus,
+  .crop-form .form-select:focus {
+    border-color: #16a34a;
+    box-shadow: 0 0 0 0.2rem rgba(22, 163, 74, 0.15);
+  }
+
+  .btn-add-crop {
+    background-color: #15803d;
+    border-color: #15803d;
+    font-weight: 600;
+  }
+
+  .btn-add-crop:hover {
+    background-color: #166534;
+    border-color: #166534;
+  }
+</style>
+
+<div class="card crop-card site-card">
+  <div class="crop-header">
+    <h2><i class="bi bi-flower2 me-2"></i>Add New Crop</h2>
+    <p>List your latest harvest with clear details for buyers.</p>
+  </div>
+
+  <div class="card-body p-4 p-md-5">
+    <form method="POST" class="crop-form">
+      <div class="mb-3">
+        <label class="form-label">Crop Name</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-flower1"></i></span>
+          <input type="text" name="crop_name" class="form-control" placeholder="e.g., Wheat" required>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Land Area (Acres)</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-rulers"></i></span>
+            <input type="number" step="0.01" name="land_area" class="form-control" placeholder="e.g., 2.50" required>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Quantity</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-box-seam"></i></span>
+            <input type="number" step="0.01" name="quantity" class="form-control" placeholder="e.g., 50" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3 mt-1">
+        <div class="col-md-6">
+          <label class="form-label">Unit</label>
+          <select name="unit" class="form-select" required>
+            <option value="" disabled selected>Select unit</option>
+            <option value="quintal">Quintal</option>
+            <option value="tonne">Tonne</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Rate (&#8377;)</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-currency-rupee"></i></span>
+            <input type="number" step="0.01" name="rate" class="form-control" placeholder="Rate per unit" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3 mt-3">
+        <label class="form-label">Harvest Date</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="bi bi-calendar-event"></i></span>
+          <input type="date" name="harvest_date" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label">Description</label>
+        <textarea name="description" class="form-control" rows="3" placeholder="Write a short crop description"></textarea>
+      </div>
+
+      <div class="d-flex flex-column flex-sm-row gap-2">
+        <button type="submit" class="btn btn-add-crop text-white px-4 flex-fill">Add Crop</button>
+        <a href="/seller_dashboard" class="btn btn-outline-secondary px-4 flex-fill">Back to Dashboard</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

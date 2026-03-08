@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+
+<div class="role-dashboard seller-dashboard">
+    <section class="dashboard-hero">
+        <p class="dashboard-kicker">Seller Workspace</p>
+        <h2 class="dashboard-title">Welcome, {{ current_user.name }}</h2>
+        <p class="dashboard-subtitle">
+            Manage crop listings, review buyer requests, and keep your agricultural business moving.
+        </p>
+    </section>
+
+    <section class="row g-3 stats-grid">
+        <div class="col-md-4">
+            <div class="stat-card">
+                <p class="stat-label mb-0">Unread Alerts</p>
+                <p class="stat-value">{{ notifications_count }}</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stat-card">
+                <p class="stat-label mb-0">Role</p>
+                <p class="stat-value">Seller</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="stat-card">
+                <p class="stat-label mb-0">Status</p>
+                <p class="stat-value">Active</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="row g-3 action-grid">
+        <div class="col-md-4">
+            <a href="{{ url_for('add_crop') }}" class="action-card">
+                <span class="action-icon"><i class="bi bi-plus-circle-fill"></i></span>
+                <h3 class="action-title">Add Crop</h3>
+                <p class="action-copy">Create a new crop listing with quantity, rate, and harvest date.</p>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="{{ url_for('seller_requests') }}" class="action-card">
+                <span class="action-icon"><i class="bi bi-inbox-fill"></i></span>
+                <h3 class="action-title">Buyer Requests</h3>
+                <p class="action-copy">Review incoming interest requests and accept or reject quickly.</p>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="{{ url_for('notifications') }}" class="action-card">
+                <span class="action-icon"><i class="bi bi-bell-fill"></i></span>
+                <h3 class="action-title">Notifications</h3>
+                <p class="action-copy">Track marketplace updates and request status in real time.</p>
+            </a>
+        </div>
+    </section>
+</div>
+
+{% endblock %}

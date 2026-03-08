@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% set role = current_user.role if current_user.is_authenticated else 'guest' %}
+
+<style>
+/* HERO SECTION */
+.hero-section {
+    background: linear-gradient(135deg, #198754, #14532d);
+    color: white;
+    padding: 100px 20px;
+    border-radius: 40px 40px 40px 40px;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-section h1 {
+    font-weight: 700;
+}
+
+.hero-buttons .btn {
+    padding: 12px 28px;
+    font-weight: 500;
+}
+
+/* FEATURE CARDS */
+.features-section {
+    padding: 80px 0;
+}
+
+.feature-card {
+    background: #dcebe2;
+    border-radius: 15px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(13, 61, 25, 0.836);
+}
+
+.feature-card i {
+    font-size: 40px;
+    color: #198754;
+}
+
+/* PROCESS SECTION */
+.process-section {
+    padding: 80px 0;
+}
+
+.process-card {
+     background: #dcebe2;
+     border-radius: 15px;
+     padding: 30px;
+     transition: all 0.3s ease;
+     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.process-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba(13, 61, 25, 0.836);
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: #198754;
+    color: white;
+    border-radius: 70%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+</style>
+
+<!-- HERO SECTION -->
+<section class="hero-section text-center">
+    <div class="container">
+
+        {% if role == 'seller' %}
+            <h1 class="display-4">Welcome Back, Seller</h1>
+            <p class="lead mt-3">Manage listings, respond to buyers, and grow your business efficiently.</p>
+        {% elif role == 'buyer' %}
+            <h1 class="display-4">Welcome Back, Buyer</h1>
+            <p class="lead mt-3">Discover fresh crops and connect directly with farmers.</p>
+        {% else %}
+            <h1 class="display-4">Direct Farmer–Buyer Marketplace</h1>
+            <p class="lead mt-3">A transparent agricultural marketplace without middlemen.</p>
+        {% endif %}
+
+        <div class="hero-buttons mt-4">
+            {% if role == 'seller' %}
+                <a href="{{ url_for('seller_dashboard') }}" class="btn btn-light me-3">Dashboard</a>
+                <a href="{{ url_for('add_crop') }}" class="btn btn-outline-light">Add Crop</a>
+            {% elif role == 'buyer' %}
+                <a href="{{ url_for('view_crops') }}" class="btn btn-light me-3">View Crops</a>
+                <a href="{{ url_for('buyer_dashboard') }}" class="btn btn-outline-light">Dashboard</a>
+            {% else %}
+                <a href="{{ url_for('register') }}" class="btn btn-outline-light">Register</a>
+                <a href="{{ url_for('login') }}" class="btn btn-outline-light">Login</a>
+            {% endif %}
+        </div>
+
+    </div>
+</section>
+
+<!-- FEATURES SECTION -->
+<section class="features-section">
+    <div class="container text-center">
+        <h2 class="mb-5 fw-bold">Why Choose Our Platform?</h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-people-fill"></i>
+                    <h4 class="mt-3">Strong Community</h4>
+                    <p>Thousands of verified buyers and sellers connected in one trusted marketplace.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-bar-chart-fill"></i>
+                    <h4 class="mt-3">Transparent Pricing</h4>
+                    <p>Clear crop rates and harvest dates for better decision making.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="bi bi-cash-coin"></i>
+                    <h4 class="mt-3">Better Profit Margins</h4>
+                    <p>Eliminate middlemen and maximize earnings through direct transactions.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="process-section">
+    <div class="container text-center">
+        <h2 class="mb-5 fw-bold">How It Works</h2>
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="step-number">1</div>
+                    <h5>Create Account</h5>
+                    <p>Register as buyer or seller to join the marketplace.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="step-number">2</div>
+                    <h5>List or Browse</h5>
+                    <p>Sellers add crops, buyers explore available listings.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="step-number">3</div>
+                    <h5>Trade Directly</h5>
+                    <p>Connect and finalize deals without middleman involvement.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

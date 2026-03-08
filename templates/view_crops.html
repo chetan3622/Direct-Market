@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-5">
+  <h2 class="mb-4 text-success">🌾 Available Crops</h2>
+
+  <div class="row">
+    {% for crop in crops %}
+      <div class="col-md-4 mb-4">
+        <div class="card site-card h-100">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ crop.crop_name }}</h5>
+            <p class="card-text">
+              Seller: {{ crop.seller.name }} <br>
+              Quantity: {{ crop.quantity }} {{ crop.unit }} <br>
+              Land Area: {{ crop.land_area }} acres <br>
+              Rate: ₹{{ crop.rate }} <br>
+              Harvest Date: {{ crop.harvest_date }}
+            </p>
+            <a href="{{ url_for('show_interest', crop_id=crop.id) }}" 
+               class="btn btn-success mt-auto">Show Interest</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <a href="/buyer_dashboard" class="btn btn-secondary mt-3">Back to Dashboard</a>
+</div>
+
+{% endblock %}
