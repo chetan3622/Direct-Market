@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="container mt-5">
-  <h2 class="mb-4 text-success">🌾 Available Crops</h2>
+  <h2 class="mb-4 text-success">🌾 Available Crops here</h2>
 
   <div class="row">
     {% for crop in crops %}
@@ -18,14 +18,14 @@
               Harvest Date: {{ crop.harvest_date }}
             </p>
             <a href="{{ url_for('show_interest', crop_id=crop.id) }}" 
-               class="btn btn-success mt-auto">Show Interest</a>
+               class="btn btn-success mt-auto">Show Your Interest</a>
           </div>
         </div>
       </div>
     {% endfor %}
   </div>
 
-  <a href="/buyer_dashboard" class="btn btn-secondary mt-3">Back to Dashboard</a>
+  <a href="/buyer_dashboard" class="btn btn-secondary mt-3">Back to home</a>
 </div>
 
 {% endblock %}
