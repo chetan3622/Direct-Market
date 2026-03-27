@@ -8,14 +8,14 @@
         <p class="dashboard-kicker">Buyer Workspace</p>
         <h2 class="dashboard-title">Welcome, {{ current_user.name }}</h2>
         <p class="dashboard-subtitle">
-            Explore available crops, compare rates, and connect with sellers directly for better sourcing.
+            Explore available crops, compare rates, and connect with sellers directly for better sourcing to help Farmers.
         </p>
     </section>
 
     <section class="row g-3 stats-grid">
         <div class="col-md-4">
             <div class="stat-card">
-                <p class="stat-label mb-0">Crops Available</p>
+                <p class="stat-label mb-0">Available Crops</p>
                 <p class="stat-value">{{ crops|length }}</p>
             </div>
         </div>
@@ -38,7 +38,7 @@
             <a href="{{ url_for('view_crops') }}" class="action-card">
                 <span class="action-icon"><i class="bi bi-basket2-fill"></i></span>
                 <h3 class="action-title">View Crops</h3>
-                <p class="action-copy">Browse listed crops with pricing, quantity, and harvest information.</p>
+                <p class="action-copy">Browse listed crops with pricing, quantity, and  rops harvest information.</p>
             </a>
         </div>
         <div class="col-md-4">
