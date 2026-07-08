@@ -164,7 +164,7 @@ def update_request(interest_id, action):
         msg = f"Your interest in {crop.crop_name} has been rejected!"
     else:
         flash("Invalid action!", "warning")
-        return redirect(url_for('seller_requests'))
+        return redirect(url_for('seller_request'))
 
     notification = Notification(user_id=interest.buyer_id, message=msg)
     db.session.add(notification)
