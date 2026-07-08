@@ -170,7 +170,7 @@ def update_request(interest_id, action):
     db.session.add(notification)
     db.session.commit()
     flash("Request updated!", "success")
-    return redirect(url_for('seller_requests'))
+    return redirect(url_for('seller_request'))
 
 # ---------------- Notifications ----------------
 @app.route('/notifications')
