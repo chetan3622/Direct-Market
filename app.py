@@ -114,7 +114,7 @@ def add_crop():
         return redirect(url_for('seller_dashboard'))
     return render_template("add_crops.html")
 
-# ---------------- View 
+# ----------------
 @app.route('/view_crops')
 @login_required
 def view_crops():
