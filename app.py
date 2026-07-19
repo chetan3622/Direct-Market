@@ -93,7 +93,7 @@ def buyer_dashboard():
 # def buyer_dashboard():
 #     return render_template("buyer_dashboard.html")
 
-# ---------------- Add Crop
+# ---------------- Add 
 @app.route('/add_crop', methods=['GET','POST'])
 @login_required
 def add_crop():
