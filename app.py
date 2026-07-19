@@ -76,7 +76,7 @@ def logout():
     flash("Logged out", "info")
     return redirect(url_for('home'))
 
-# ---------------- Dashboards
+# ---------------- Dash
 @app.route('/seller_dashboard')
 @login_required
 def seller_dashboard():
