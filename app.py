@@ -120,7 +120,7 @@ def view_crops():
     crops = Crop.query.all()
     return render_template("view_crops.html", crops=crops)
 
-# ---------------- Show Interest ----------------
+# ---------------- Show Interest -------
 @app.route('/show_interest/<int:crop_id>')
 @login_required
 def show_interest(crop_id):
