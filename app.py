@@ -146,7 +146,7 @@ def seller_requests():
     interests = Interest.query.join(Crop).filter(Crop.seller_id==current_user.id).all()
     return render_template("seller_request.html", interests=interests)
 
-# ---------------- Update Request (accept/reject) ----------------
+# ---------------- Update Request (accept/reject) ----
 @app.route('/update_request/<int:interest_id>/<action>')
 @login_required
 def update_request(interest_id, action):
