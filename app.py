@@ -139,7 +139,7 @@ def show_interest(crop_id):
     flash("Interest sent to seller!", "success")
     return redirect(url_for('view_crops'))
 
-# ----
+
 @app.route('/seller_requests')
 @login_required
 def seller_requests():
