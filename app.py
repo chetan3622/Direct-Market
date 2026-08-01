@@ -167,7 +167,7 @@ def update_request(interest_id, action):
     flash("Request updated!", "success")
     return redirect(url_for('seller_request'))
 
-# ---------------- No
+# ---------------- 
 @app.route('/notifications')
 @login_required
 def notifications():
